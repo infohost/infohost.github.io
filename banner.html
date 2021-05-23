@@ -1,0 +1,127 @@
+<title>Office License Isn't Genuine</title>
+<h3><br />
+Proposed explanation and solutions for Office C2R &#39;<span style="color:#e67e22">Your license isn&#39;t genuine</span>&#39; banner:</h3>
+
+<hr />
+<p><strong><span style="color:#27ae60"><span style="font-size:18px">Solution (Known to be perfect):</span></span></strong><br />
+<br />
+<span style="font-size:16px"><strong>Preparation:</strong></span></p>
+
+<ul>
+	<li>Uninstall the office with App and Features (Control Panel) in Windows settings.</li>
+	<li>Run <span style="font-family:Georgia,serif">Full_Scrub.cmd</span> file from <a href="https://forums.mydigitallife.net/posts/1466365/" target="_blank">Office Scrubber</a> (<a href="https://github.com/abbodi1406/WHD/raw/master/scripts/OfficeScrubber_5f.7z" target="_blank">Mirror</a>) by @<a href="https://forums.mydigitallife.net/members/abbodi1406.204274/" target="_blank">abbodi1406</a> and reboot the system.<br />
+	&nbsp;</li>
+</ul>
+
+<p><span style="font-size:16px"><strong>Install any of the below products:</strong></span></p>
+
+<ul>
+	<li><strong><span style="font-size:14px">Install Office with 2013 / 2016 MSI VL ISO</span></strong> -&nbsp;<a href="https://downloads.luzea.ovh/Office/" target="_blank">Link</a><br />
+	OR</li>
+	<li>
+	<p><strong><span style="font-size:14px">Install Office 2013 C2R ISO</span></strong> -&nbsp;<a href="https://tb.rg-adguard.net/public.php" target="_blank">Link</a><br />
+	OR</p>
+	</li>
+	<li>
+	<p><span style="font-size:14px"><strong>Install Office 2019 C2R Volume with &#39;PerpetualVL2019&#39; update channel</strong></span><br />
+	To do that, follow the below steps,<br />
+	<br />
+	Download <a href="http://officecdn.microsoft.com/pr/wsus/setup.exe" target="_blank">Office Deployment Tool</a>&nbsp;(ODT)<br />
+	Copy the downloaded <span style="font-family:Georgia,serif">setup.exe&nbsp;</span>file to the root of the C drive, i.e. <span style="font-family:Georgia,serif">C:\</span><br />
+	<br />
+	Goto&nbsp;<a href="https://config.office.com/deploymentsettings" target="_blank">config.office.com</a><br />
+	- Select any &#39;Office 2019 - Volume&#39; in the office suites section, customize other things and leave as default where you don&#39;t understand something.<br />
+	- In the select version option, select <span style="font-family:Georgia,serif">Latest</span> when you don&#39;t want to store files for later use, and select a <span style="font-family:Georgia,serif">specific version name</span>&nbsp;if&nbsp;you want to save files for later use without redownloading.<br />
+	- Once you go through all the options, click on the <span style="font-family:Georgia,serif">export</span>&nbsp;button and it will download a file named <span style="font-family:Georgia,serif">Configuration.xml</span><br />
+	- Copy the downloaded <span style="font-family:Georgia,serif">Configuration.xml</span>&nbsp;file&nbsp;to the root of the C drive, i.e. <span style="font-family:Georgia,serif">C:\</span><br />
+	<br />
+	Open the command prompt as admin and run the below&nbsp;commands</p>
+
+	<pre>
+<code>cd /d C:\</code></pre>
+
+	<pre>
+<code>setup.exe /download Configuration.xml</code></pre>
+	Wait for it to finish, it will download around 2-3 GB files... Once done,
+
+	<pre>
+<code>setup.exe /configure Configuration.xml</code></pre>
+	It will install Office with the downloaded files if found in the same directory. You can also use this command to directly install Office online and can skip the 2nd command.<br />
+	<br />
+	That&#39;s all.<br />
+	Alternatively, you can use 3rd party tools for this job, such as&nbsp;<a href="https://github.com/YerongAI/Office-Tool/releases" target="_blank">Office Tool Plus</a>&nbsp;or (<a href="https://forums.mydigitallife.net/posts/1505755/" target="_blank">YAOCTRU</a> &amp; <a href="https://forums.mydigitallife.net/posts/1479890/" target="_blank">YAOCTRI</a>)<br />
+	P.S. there are no&nbsp;<span style="font-family:Georgia,serif">Official</span> ISO&#39;s or one-click installer files available for this product.</li>
+</ul>
+
+<p><span style="font-size:16px"><strong>Activate with KMS:</strong></span></p>
+
+<ul>
+	<li>Use&nbsp;<a href="https://forums.mydigitallife.net/posts/838808/" target="_blank">KMS_VL_ALL</a>&nbsp;(<a href="https://pastebin.com/cpdmr6HZ" target="_blank">Mirror</a>) by&nbsp;@<a href="https://forums.mydigitallife.net/members/abbodi1406.204274/" target="_blank">abbodi1406</a>&nbsp;or MAS<br />
+	&nbsp;</li>
+</ul>
+
+<hr />
+<p><br />
+<span style="color:#669966"><strong><span style="font-size:18px">Experimental solutions:</span></strong>&nbsp;</span></p>
+
+<ul>
+	<li>Install Office 2021 (currently in preview version), to do that just follow the above guide for 2019 and make changes in the product section and update-channel&nbsp;(select Office 2021 Perpetual Enterprise)&nbsp;in&nbsp;the configuration step.<br />
+	&nbsp;</li>
+	<li>Those who want the latest and most features of Office with KMS activation without banner issue can try&nbsp;<span style="font-family:Georgia,serif">Monthly Enterprise channel </span>with <strong>O365</strong> product. To do that, just follow the above guide for 2019 and make changes in the product section and update-channel in the configuration step.<br />
+	&nbsp;</li>
+	<li>Those who don&#39;t want to reinstall and lose the current setup can try these commands to change the update channel to Production::MEC | Monthly Enterprise.<br />
+	Open command prompt as admin and enter below lines one by one and press enter,
+	<pre>
+<code>reg add HKLM\SOFTWARE\Microsoft\Office\ClickToRun\Configuration /v CDNBaseUrl /t REG_SZ /d "http://officecdn.microsoft.com/pr/55336B82-A18D-4DD6-B5F6-9E5095C314A6" /f
+reg delete HKLM\SOFTWARE\Microsoft\Office\ClickToRun\Configuration /v UpdateUrl /f
+reg delete HKLM\SOFTWARE\Microsoft\Office\ClickToRun\Configuration /v UpdateToVersion /f
+reg delete HKLM\SOFTWARE\Microsoft\Office\ClickToRun\Updates /v UpdateToVersion /f
+reg delete HKLM\SOFTWARE\Policies\Microsoft\Office\16.0\Common\OfficeUpdate\ /f
+"%CommonProgramFiles%\microsoft shared\ClickToRun\OfficeC2RClient.exe" /update user</code></pre>
+	<a href="https://forums.mydigitallife.net/threads/discussion-microsoft-office-2019.75232/page-154#post-1605169" target="_blank">Source</a>. Thanks to&nbsp;@<a href="https://forums.mydigitallife.net/members/abbodi1406.204274/" target="_blank">abbodi1406</a><br />
+	Thanks to @<a href="https://forums.mydigitallife.net/members/181809/" target="_blank">Teknik</a>&nbsp;for the idea of changing the update channel.<br />
+	<br />
+	Please report back in case if it doesn&#39;t stop the banner.</li>
+</ul>
+
+<hr />
+<p><br />
+<span style="color:#7f8c8d"><span style="font-size:18px"><strong>The solutions which are&nbsp;currently working but won&#39;t work with upcoming updates:</strong></span></span></p>
+
+<ul>
+	<li>To disable banners, you can disable the&nbsp;optional connected experience, to do that go to Account &gt; Manage settings.&nbsp;<br />
+	By doing this, you may miss out on some features.&nbsp;<br />
+	On latest insider builds, Office forces the banner even with this setting disabled. It will be followed in regular update channels.<br />
+	&nbsp;</li>
+</ul>
+
+<hr />
+<p><br />
+<span style="color:#ff6600"><strong><span style="font-size:18px">The solutions which are not working for all:</span></strong></span></p>
+
+<ul>
+	<li>After the KMS activation, leave the KMS server address (even non-existent) in the system. To make sure, you can use the below&nbsp;command,
+	<pre>
+<code>slmgr /skms 0.0.0.0</code></pre>
+
+	<p>KMS_VL_ALL and MAS, already leave the KMS server address so don&#39;t need to manually do that.<br />
+	&nbsp;</p>
+	</li>
+</ul>
+
+<hr />
+<p><br />
+<span style="color:#2980b9"><strong><span style="font-size:18px">The explanation on how Office is identifying non-genuine KMS license:</span></strong></span></p>
+
+<p>To be added...<br />
+&nbsp;</p>
+
+<hr />
+<p><br />
+<span style="font-size:18px"><strong>P.S.</strong></span></p>
+
+<ul>
+	<li>Info about the reason for appearing the banner is based on observations and user reports, MS may change their&nbsp;detection policy in the future or some things may have missed in our observation. If you have any info conflicting&nbsp;with this info here or any other useful info then please email me at <strong>windowsaddict@protonmail.com</strong></li>
+</ul>
+
+<p>Updated on 23-May-2021</p>
