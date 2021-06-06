@@ -10,14 +10,15 @@ Proposed explanation and solutions for Office C2R &#39;<span style="color:#e67e2
 <ul>
 	<li>Uninstall the office with App and Features (Control Panel) in Windows settings.</li>
 	<br />
-	<li>Run <span style="font-family:Georgia,serif">Full_Scrub.cmd</span> file from <a href="https://forums.mydigitallife.net/posts/1466365/" target="_blank">Office Scrubber</a> (<a href="https://github.com/abbodi1406/WHD/raw/master/scripts/OfficeScrubber_5f.7z" target="_blank">Mirror</a>) by @<a href="https://forums.mydigitallife.net/members/abbodi1406.204274/" target="_blank">abbodi1406</a> and reboot the system.<br />
-	It's optional. You can skip this step if you want to save outlook related data.</li>
+	<li>Run <code>Full_Scrub.cmd</code> file from <a href="https://forums.mydigitallife.net/posts/1466365/" target="_blank">Office Scrubber</a> (<a href="https://github.com/abbodi1406/WHD/raw/master/scripts/OfficeScrubber_5f.7z" target="_blank">Mirror</a>) by @<a href="https://forums.mydigitallife.net/members/abbodi1406.204274/" target="_blank">abbodi1406</a> and reboot the system.<br />
+	Full Scrub is optional, you can skip this step if you want to save outlook related data.<br />
+	It's recommended to atleast run <code>Remove_Licenses.cmd</code> file from this package.</li>
 </ul>
 
 <p><span style="font-size:16px"><strong>Install any of the below products:</strong></span></p>
 
 <ul>
-	<li><strong><span style="font-size:14px">Install Office with 2013 / 2016 MSI VL ISO</span></strong> -&nbsp;<a href="https://downloads.luzea.ovh/Office/" target="_blank">Link</a><br />
+	<li><strong><span style="font-size:14px">Install Office with 2013 / 2016 MSI VL ISO</span></strong> -&nbsp;<a href="https://opendirectory.luzea.de/Office/" target="_blank">Link</a><br />
 	OR</li>
 	<li>
 	<p><strong><span style="font-size:14px">Install Office 2013 C2R ISO</span></strong> -&nbsp;<a href="https://tb.rg-adguard.net/public.php" target="_blank">Link</a><br />
@@ -25,7 +26,7 @@ Proposed explanation and solutions for Office C2R &#39;<span style="color:#e67e2
 	</li>
 	<li>
 	<p><span style="font-size:14px"><strong>Install Office 2019 C2R Volume with &#39;PerpetualVL2019&#39; update channel</strong></span><br />
-	To do that, follow the below steps,<br />
+	To do that with the official method, follow the below steps,<br />
 	<br />
 	Download <a href="https://officecdn.microsoft.com/pr/wsus/setup.exe">Office Deployment Tool</a>&nbsp;(ODT)<br />
 	Copy the downloaded <span style="font-family:Georgia,serif">setup.exe&nbsp;</span>file to the root of the C drive, i.e. <span style="font-family:Georgia,serif">C:\</span><br />
@@ -49,15 +50,14 @@ Proposed explanation and solutions for Office C2R &#39;<span style="color:#e67e2
 <code>setup.exe /configure Configuration.xml</code></pre>
 	It will install Office with the downloaded files if found in the same directory. You can also use this command to directly install Office online and can skip the 2nd command.<br />
 	<br />
-	That&#39;s all.<br />
-	Alternatively, you can use 3rd party tools for this job, such as&nbsp;<a href="https://github.com/YerongAI/Office-Tool/releases" target="_blank">Office Tool Plus</a>&nbsp;or (<a href="https://forums.mydigitallife.net/posts/1505755/" target="_blank">YAOCTRU</a> &amp; <a href="https://forums.mydigitallife.net/posts/1479890/" target="_blank">YAOCTRI</a>)<br />
+	That&#39;s all. As an alternative, if you want 3rd party tools for this then try <a href="https://github.com/YerongAI/Office-Tool/releases" target="_blank">Office Tool Plus</a>&nbsp;or (<a href="https://forums.mydigitallife.net/posts/1505755/" target="_blank">YAOCTRU</a> &amp; <a href="https://forums.mydigitallife.net/posts/1479890/" target="_blank">YAOCTRI</a>)<br />
 	P.S. there are no&nbsp;<span style="font-family:Georgia,serif">Official</span> ISO&#39;s or one-click installer files available for this product.</li>
 </ul>
 
 <p><span style="font-size:16px"><strong>Activate with KMS:</strong></span></p>
 
 <ul>
-	<li>Use&nbsp;<a href="https://forums.mydigitallife.net/posts/838808/" target="_blank">KMS_VL_ALL</a>&nbsp;(<a href="https://pastebin.com/cpdmr6HZ" target="_blank">Mirror</a>) by&nbsp;@<a href="https://forums.mydigitallife.net/members/abbodi1406.204274/" target="_blank">abbodi1406</a>&nbsp;or MAS<br />
+	<li>Use latest <a href="https://forums.mydigitallife.net/posts/838808/" target="_blank">KMS_VL_ALL</a>&nbsp;(<a href="https://pastebin.com/cpdmr6HZ" target="_blank">Mirror</a>) by&nbsp;@<a href="https://forums.mydigitallife.net/members/abbodi1406.204274/" target="_blank">abbodi1406</a>&nbsp;or MAS<br />
 	&nbsp;</li>
 </ul>
 
@@ -72,7 +72,7 @@ Proposed explanation and solutions for Office C2R &#39;<span style="color:#e67e2
 	<li>Those who want the latest and most features of Office with KMS activation without banner issue can try&nbsp;<span style="font-family:Georgia,serif">Monthly Enterprise channel </span>with <strong>O365</strong> product. To do that, just follow the above guide for 2019 and make changes in the product section and update-channel in the configuration step.<br />
 	OR</p>
 	</li>
-	<li>Those who don&#39;t want to reinstall and lose the current setup can try these commands to change the update channel to Production::MEC | Monthly Enterprise.<br />
+	<li>Those who don&#39;t want to reinstall and lose the current setup can try these commands to change the update channel to Production::MEC | MonthlyEnterprise<br />
 	Open command prompt as admin and enter below lines one by one and press enter,
 	<pre>
 <code>reg add HKLM\SOFTWARE\Microsoft\Office\ClickToRun\Configuration /v CDNBaseUrl /t REG_SZ /d "http://officecdn.microsoft.com/pr/55336B82-A18D-4DD6-B5F6-9E5095C314A6" /f
@@ -81,10 +81,12 @@ reg delete HKLM\SOFTWARE\Microsoft\Office\ClickToRun\Configuration /v UpdateToVe
 reg delete HKLM\SOFTWARE\Microsoft\Office\ClickToRun\Updates /v UpdateToVersion /f
 reg delete HKLM\SOFTWARE\Policies\Microsoft\Office\16.0\Common\OfficeUpdate\ /f
 "%CommonProgramFiles%\microsoft shared\ClickToRun\OfficeC2RClient.exe" /update user</code></pre>
-	<a href="https://forums.mydigitallife.net/threads/discussion-microsoft-office-2019.75232/page-154#post-1605169" target="_blank">Source</a>. Thanks to&nbsp;@<a href="https://forums.mydigitallife.net/members/abbodi1406.204274/" target="_blank">abbodi1406</a><br />
+
+Make sure Internet is connected and Office is successfully updated with the last command.<br />
+	<a href="https://forums.mydigitallife.net/threads/discussion-microsoft-office-2019.75232/page-154#post-1605169" target="_blank">Source</a>, thanks to&nbsp;@<a href="https://forums.mydigitallife.net/members/abbodi1406.204274/" target="_blank">abbodi1406</a><br />
 	Thanks to @<a href="https://forums.mydigitallife.net/members/181809/" target="_blank">Teknik</a>&nbsp;for the idea of changing the update channel.<br />
 	<br />
-	Please report back in case if it doesn&#39;t stop the banner.</li>
+	Please report (email: windowsaddict@protonmail.com) if any of these 3 methods doesn&#39;t stop the banner.</li>
 </ul>
 
 <hr />
