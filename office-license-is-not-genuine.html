@@ -54,7 +54,7 @@ goto :end
 
 set app=
 setlocal EnableDelayedExpansion
-for /f "tokens=2 delims==" %%G in ('"wmic path SoftwareLicensingProduct where (ApplicationID='0ff1ce15-a989-479d-af46-f275c6370663' and Description like '%%KMSCLIENT%%' and PartialProductKey is not NULL) get ID /VALUE" 2^>nul') do (if defined app (call set "app=!app! %%G") else (call set "app=%%G"))
+for /f "tokens=2 delims==" %%G in ('"wmic path SoftwareLicensingProduct where (ApplicationID='0ff1ce15-a989-479d-af46-f275c6370663' and Description like '%%KMSCLIENT%%' and not Description like '%%Office 15%%' and PartialProductKey is not NULL) get ID /VALUE" 2^>nul') do (if defined app (call set "app=!app! %%G") else (call set "app=%%G"))
 
 if not defined app (
 echo Could not detect Volume version of Office C2R 2016/2019/2021 on Windows 8 and later.
@@ -110,4 +110,4 @@ pause >nul</code></pre>
 	<li>If you have any conflicting info or any other useful info then please email me at <strong>windowsaddict@protonmail.com</strong></li>
 </ul>
 
-<p>Updated on 11-Jul-2021</p>
+<p>Updated on 12-Jul-2021</p>
