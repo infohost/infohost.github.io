@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<title>Troubleshoot ReadMe - HWID</title>
+<pre>
+<code>
+________________________________
+
+ HWID Activation Troubleshoot:
+________________________________
+
+ - Make sure you are using the latest version of the activator, to check it, browse the links listed 
+   in the bottom of this page.
+
+ - Make sure the internet is connected.
+
+ - If the HWID Activation script showed error about Windows Update service (wuauserv), then make 
+   sure any update blocking tools or script is not in action in the system. You need to check it
+   and unblock windows update with that same tool.
+
+ - VPN, privacy-based hosts and/or firewall rules may cause problems with the activation. Disable 
+   them if you are facing problems in activation.
+
+ - Reboot the system.
+
+ - Now run the script to activate Windows 10, and if unsuccessful, 
+   Try the troubleshoot button in the Settings > Update & Security > Activation, page.
+   
+ - If still unsuccessful then try additional troubleshoot steps listed below.
+_______________________________________________________________________________________________________
+
+ - Make sure hardware component proper drivers are installed, check manufacturer site/Windows-
+   update for drivers.
+
+ - Apply: [2] Dism RestoreHealth
+
+   Reboot the system
+
+ - Apply: [3] SFC Scannow
+
+   Reboot the system (If error found in SFC Scan, run the scan again) and run the activation script, 
+   and if unsuccessful, 
+
+ - Apply: [4] Windows Rearm - Specific APP-SKU
+
+   Reboot the system and run the activation script, and if unsuccessful, 
+
+ - Apply: [C] Clean ClipSVC Licences
+
+   Reboot the system and run the activation script, and if unsuccessful,
+
+ - Apply: [8] Rebuild Licensing Tokens
+
+   Reboot the system and run the activation script, and if unsuccessful, 
+
+ - Either try KMS38 / KMS activation or do repair install of Windows 10 with an In-place upgrade, 
+   check below link for how to.
+ 
+   tenforums.com/tutorials/16397-repair-install-windows-10-place-upgrade.html
+_______________________________________________________________________________________________________
+
+ Activation is blocked in some countries -
+___________________________________________
+
+ - Microsoft servers block the activation request from some countries such as Iran,
+   To activate the system in those countries, follow the below steps,
+   - In the settings app, Change Region and Timezone to the USA location and use a VPN, choose the
+     the location of the USA. Now run the script, it should activate now.
+_______________________________________________________________________________________________________
+
+ - Some machines are not able to generate GenuineTicket.xml file using gatherosstate.exe
+   The reason is unknown (to me). Please contact me if it happens to you.
+   
+ - In some rare cases, Microsoft's activation servers may have the issues.
+_______________________________________________________________________________________________________
+
+   Homepage: windowsaddict.ml
+      Email: windowsaddict@protonmail.com
+_______________________________________________________________________________________________________
+</code></pre>
+
+<p>&nbsp;</p>
+
+
