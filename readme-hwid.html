@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<title>ReadMe - HWID</title>
+<pre>
+<code>
+====================================================================================================
+   [HWID] Digital License Activation:
+====================================================================================================
+
+ - This read me only contains the info about how "HWID clientLockboxKey" method is different 
+   from the "HWID downlevelGTkey" default, general method.
+   For general info about HWID, check the HWID read me file in the main section.
+   
+ - In activated windows 10, when system upgrades or when gatherosstate.exe file is run, it creates 
+   clientLockboxKey ticket 
+
+Homepage:
+NsaneForums: (Login Required) https://www.nsaneforums.com/topic/316668-microsoft-activation-scripts/
+Check homepage for details.
+
+
+
+
+
+
+
+====================================================================================================
+   [HWID] Digital License Activation:
+====================================================================================================
+
+ - This activation is supported for Windows 10 ONLY.
+ - This activation does not store any files in your system.
+ - This activation is a permanent activation for your system Hardware.
+
+ - On a system, this activation can be created for all the supported editions, and all can be 
+   linked to Microsoft account without any issues.
+
+ - Once a system is activated, this activation cannot be removed. (Because the license is stored in 
+   the Microsoft servers and not in the user's system.)
+
+ - Any significant changes in the Hardware (such as a motherboard) may deactivate the system. 
+   It is possible to reactivate a system that was deactivated because of significant hardware
+   changes, IF your activation, was linked to an online Microsoft account.
+
+ - For activation to succeed, the Windows Update Service and internet connectivity must be enabled.
+   If you are trying to activate without these conditions being met, then the system will auto-
+   activate later when the conditions are met.
+
+ - Auto activation scenario after the Windows reinstall:
+   - The Internet is required. (Only at the time of activation)
+   - The system will auto-activate if Retail (Consumer) media was used for the installation.
+   - The system will NOT auto-activate if VL (Business) media was used for the installation.
+     In this case, the user will have to insert that windows edition Retail/OEM key (find keys below
+     in this page) to activate, if the user doesn't wish to activate again using this script.
+
+ - Possible reasons for activation failure:
+   - The Internet is not connected.
+   - Windows update service is disabled.
+   - Use of a VPN, and/or a privacy-based hosts file, firewall rules.
+   - Corrupt system files.
+   - Microsoft servers block the activation request from some countries such as Iran.
+   - Rarely, Microsoft's activation servers are the problem.
+   - Some machines are not able to generate GenuineTicket.xml file using gatherosstate.exe
+     The reason is unknown (to me). Please contact me if it happens to you.
+
+   * Check Troubleshoot Script in the "Extras" section if you are facing issues with activation.
+
+ - Check Extract OEM option in the "Extras" section if you want pre-activated Windows installation.
+
+====================================================================================================
+
+   Documentation by @mspaintmsi
+
+   Included topics-
+
+   How does it work?
+   Is it possible that Microsoft can block these Digital Licenses (HWID)?
+
+   https://pastebin.com/raw/7Xyaf15Z
+
+   Other repositories by @mspaintmsi (Work in progress)
+
+   https://github.com/massgravel/MASSGRAVE
+   https://gitlab.com/massgrave/massgrave
+
+====================================================================================================
+   Supported Products:
+====================================================================================================
+
+   Windows 10:
+
+   Core
+   CoreCountrySpecific
+   CoreN
+   CoreSingleLanguage
+   Education
+   EducationN
+   Enterprise
+   EnterpriseN
+   EnterpriseS    [LTSB 2015 & 2016]
+   EnterpriseSN   [LTSB 2015 & 2016]
+   Professional
+   ProfessionalEducation
+   ProfessionalEducationN
+   ProfessionalN
+   ProfessionalWorkstation
+   ProfessionalWorkstationN
+   ServerRdsh
+   IoTEnterprise
+
+
+   Note - X86-X64 and ARM64 architecture systems are supported.
+        - Any Evaluation version of Windows (i.e. 'EVAL' LTSB/C) cannot be activated.
+        - LTSC 2019 is not supported.
+
+====================================================================================================
+   Switches for the Script:
+====================================================================================================
+
+ - To run the script in unattended mode, use /u parameter.
+"HWID_Activation.cmd" /u
+
+====================================================================================================
+   File Details:
+====================================================================================================
+
+   fabb5a0fc1e6a372219711152291339af36ed0b5 *gatherosstate.exe                  Virus Total = 0/72
+   ca3a51fdfc8749b8be85f7904b1c238a6dfba135 *slc.dll                            Virus Total = 0/63
+   da1afd97d92dd6026e7095ee7442a2144f78ed0b *clientLockboxKey_slc.dll           Virus Total = 0/70
+   578364cb2319da7999acd8c015b4ce8da8f1b282 *ARM64_gatherosstate.exe            Virus Total = 0/69
+   5dbea3a580cf60391453a04a5c910a3ceca2b810 *ARM64_slc.dll                      Virus Total = 0/68
+   48d928b1bec25a56fe896c430c2c034b7866aa7a *ClipUp.exe                         Virus Total = 0/69
+
+   Virus total report date: 2020-03-30
+ * Virus total report and antivirus real-time scan report upon file execution can be different.
+
+ - File Sources:
+
+   - ClipUp.exe (Original):
+     From Windows server 2016 x64 ISO
+
+   - gatherosstate.exe (Original):
+     From Windows 10 x86 14393 ADK
+
+   - ARM64_gatherosstate.exe (Original):
+     From Windows 10 ARM64 18362 ISO
+
+   - ARM64_slc.dll, slc.dll and clientLockboxKey_slc.dll:
+
+     Original slshim (Not in use)
+     https://github.com/vyvojar/slshim
+
+     Improved by @mspaintmsi (In use)
+     https://www.nsaneforums.com/topic/316668--/?do=findComment&comment=1497887
+     
+     Other repositories by @mspaintmsi (Work in progress)
+     https://github.com/massgravel/MASSGRAVE
+     https://gitlab.com/massgrave/massgrave
+
+     @mspaintmsi source code files complete mirror by @WindowsAddict
+     https://app.box.com/s/y71tpcamofcg6zv6k7by6gaex6om3q4d
+
+     slc.dll is based on Integrated_Patcher_2.7z
+     ARM64_slc.dll is based on 62_llvm.7z
+     clientLockboxKey_slc.dll is based on clientLockboxKey.7z
+____________________________________________________________________________________________________
+
+     You can safely delete the following files if it's not required for you.
+
+     ClipUp.exe - Required to KMS38 activate Server Cor and Acor editions.
+     ARM64_gatherosstate.exe and ARM64_slc.dll - Required to activate ARM64 Arch Windows 10.
+     clientLockboxKey_slc.dll - Required for HWID alternate activation method
+
+====================================================================================================
+   Manual Activation Process:
+====================================================================================================
+
+ - Prerequisite:
+
+   For Windows 10 x86-x64 system, you need following files,
+   fabb5a0fc1e6a372219711152291339af36ed0b5 *gatherosstate.exe
+   ca3a51fdfc8749b8be85f7904b1c238a6dfba135 *slc.dll
+
+   For Windows 10 ARM64 system, you need following files,
+   578364cb2319da7999acd8c015b4ce8da8f1b282 *ARM64_gatherosstate.exe
+   5dbea3a580cf60391453a04a5c910a3ceca2b810 *ARM64_slc.dll
+   * Rename the ARM64 files to gatherosstate.exe and slc.dll respectively.
+
+
+   Make a folder named 'Files' in C drive, [C:\Files] and copy the required files in that folder.
+
+   -------------------------------------------------------------------------------------------------
+
+         Retail/OEM Keys            Windows 10 Editions
+
+   YTMG3-N6DKC-DKB77-7M9GH-8HVX7    Core
+   4CPRK-NM3K3-X6XXQ-RXX86-WXCHW    CoreN
+   N2434-X9D7W-8PF6X-8DV9T-8TYMD    CoreCountrySpecific
+   BT79Q-G7N6G-PGBYW-4YWX6-6F4BT    CoreSingleLanguage
+   YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY    Education
+   84NGF-MHBT6-FXBX8-QWJK7-DRR8H    EducationN
+   XGVPP-NMH47-7TTHJ-W3FW7-8HV2C    Enterprise
+   3V6Q6-NQXCX-V8YXR-9QCYV-QPFCT    EnterpriseN
+   FWN7H-PF93Q-4GGP8-M8RF3-MDWWW    EnterpriseS      [LTSB 2015]
+   8V8WN-3GXBH-2TCMG-XHRX3-9766K    EnterpriseSN     [LTSB 2015]
+   NK96Y-D9CD8-W44CQ-R8YTK-DYJWX    EnterpriseS      [LTSB 2016]
+   2DBW3-N2PJG-MVHW3-G7TDK-9HKR4    EnterpriseSN     [LTSB 2016]
+   VK7JG-NPHTM-C97JM-9MPGT-3V66T    Professional
+   2B87N-8KFHP-DKV6R-Y2C8J-PKCKT    ProfessionalN
+   8PTT6-RNW4C-6V7J2-C2D3X-MHBPB    ProfessionalEducation
+   GJTYN-HDMQY-FRR76-HVGC7-QPF8P    ProfessionalEducationN
+   DXG7C-N36C4-C4HTG-X4T3X-2YV77    ProfessionalWorkstation
+   WYPNQ-8C467-V2W6J-TX4WX-WT2RQ    ProfessionalWorkstationN
+   NJCF7-PW8QT-3324D-688JX-2YV66    ServerRdsh
+   XQQYW-NFFMW-XJPBH-K8732-CKFFD    IoTEnterprise
+   
+   -------------------------------------------------------------------------------------------------
+
+ - Make sure the Windows Update Service and internet are both enabled.
+ - Open a command prompt (run cmd.exe) as administrator, and enter following listed commands in the 
+   the sequence in which they are given.
+ - Enter Retail/OEM Key, (Replace '%key%' with the key from the above list) with the following command:
+
+cscript /nologo %windir%\system32\slmgr.vbs /ipk %key%
+
+ - Make sure slc.dll and gatherosstate.exe files are located in the folder, "C:\Files" and enter 
+   the following commands to generate GenuineTicket.xml file.
+
+   For x86-x64 systems,
+
+pushd "C:\Files"
+rundll32 "C:\Files\slc.dll",PatchGatherosstate
+call "C:\Files\gatherosstatemodified.exe"
+
+   For ARM64 systems,
+
+call "C:\Files\gatherosstate.exe"
+
+ - Now a GenuineTicket.xml file should be created in the folder "C:\Files\", copy and paste this file in the 
+   folder named, "C:\ProgramData\Microsoft\Windows\ClipSVC\GenuineTicket\"
+
+ - Now apply this ticket using the following commands in this sequence:
+
+net stop ClipSVC
+net start ClipSVC
+
+ - Activate Windows with the following command:
+
+cscript /nologo %windir%\system32\slmgr.vbs /ato
+
+ - Check Activation Status with the following command:
+
+cscript /nologo %windir%\system32\slmgr.vbs /xpr
+
+ - Done.
+
+   * Note - [clipup -v -o -altto <ticket_path>] method to apply the ticket was not suggested because
+            of the issues in case the username have spaces or non English characters.
+
+=========================================================================================================
+   Credits:
+=========================================================================================================
+
+   @mspaintmsi   Original co-authors of HWID/KMS38 Activation without KMS or predecessor install/upgrade.
+        &        https://www.nsaneforums.com/topic/316668--/?do=findComment&comment=1497887
+   *Anonymous    
+
+                 Other repositories by @mspaintmsi. (Work in progress)
+                 https://github.com/massgravel/MASSGRAVE
+                 https://gitlab.com/massgrave/massgrave
+
+---------------------------------------------------------------------------------------------------------
+
+   Acknowledgements-
+
+   @vyvojar      Original slshim (slc.dll)
+                 https://github.com/vyvojar/slshim/releases
+  
+   @sponpa       New ideas for the HWID/KM38 Generation
+                 https://www.nsaneforums.com/topic/316668--/page/21/?tab=comments#comment-1431257
+
+   @leitek8      Improvements for the slc.dll
+                 https://www.nsaneforums.com/topic/316668--/page/22/?tab=comments#comment-1438005
+
+---------------------------------------------------------------------------------------------------------
+
+   Kind Help-
+
+   Thanks for answering my queries. (In no particular order)
+   @AveYo aka @BAU, @sponpa, @mspaintmsi, @RPO, @leitek8, @mxman2k, @Yen, @abbodi1406.
+
+   Thanks to @BorrowedWifi for fixing English grammar errors.
+   Thanks to @Chibi ANUBIS and @smashed for testing scripts for ARM64 system.
+
+   Special thanks to @abbodi1406 for providing the great help.
+
+---------------------------------------------------------------------------------------------------------
+
+   HWID Activation Script is a part of 'Microsoft Activation Scripts' project.
+
+   Homepages-
+
+   GitHub:       github.com/massgravel/microsoft-activation-scripts
+   GitLab:       gitlab.com/massgrave/microsoft-activation-scripts
+
+   NsaneForums:  nsaneforums.com/topic/316668-microsoft-activation-scripts/
+                 discussion thread - login required
+
+   Email-        windowsaddict@protonmail.com
+
+   P.S. I (@WindowsAddict) did not help in the development of HWID/KMS38 Activation in any way, I only 
+   manage batch script tool which is based on the above mentioned original co-authors activation methods.
+   
+=========================================================================================================
+</code></pre>
+
+<p>&nbsp;</p>
+
+
