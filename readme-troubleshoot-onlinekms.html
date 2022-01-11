@@ -2,6 +2,8 @@
 <title>Troubleshoot ReadMe - Online KMS</title>
 <pre>
 <code>
+These instructions are written in context of Activation Troubleshoot option in MAS.
+
 ______________________________
 
  KMS Activation Troubleshoot:
@@ -14,11 +16,8 @@ ______________________________
 
  - Reboot the system.
 
- - Now run the script to activate, if still unsuccessful and you are looking for an another activator,
-   try 'KMS_VL_ALL' by @abbodi1406,
-
-   Homepage: forums.mydigitallife.net/posts/838808 (login required) 
-   Alternate official link: pastebin.com/cpdmr6HZ
+ - Now run the script to activate, if still unsuccessful and you want to try another activator then use,
+   'KMS_VL_ALL' by @abbodi1406  https://github.com/abbodi1406/KMS_VL_ALL_AIO
 
    Tip - Don't start to search and use other unknown tools found on unreliable sites via google search 
    result, they may (some already do) ruin your system with malwares.
@@ -26,46 +25,39 @@ ______________________________
  - If still unsuccessful then try additional troubleshoot steps listed below.
 _______________________________________________________________________________________________________
 
- - Apply: [2] Dism RestoreHealth | (Not in Windows 7)
+ - Apply: [4] Dism RestoreHealth | (Not in Windows 7)
 
    Reboot the system 
 
- - Apply: [3] SFC Scannow
+ - Apply: [5] SFC Scannow
 
    Reboot the system (If error found in SFC Scan, run the scan again) and run the activation script, 
    and if unsuccessful, 
+
+ - If Windows activation is the issue:
+ 
+   Apply: [6] Windows Rearm - Specific SKU ID  | (Windows 8/8.1/10)
 
  - If office activation is the issue,
    Goto add and remove programs in control panel and repair the Office from there,
    Reboot the system and run the activation script, and if unsuccessful, 
 
- - If Windows activation is the issue:
- 
-   Apply: [4] Windows Rearm - Specific APP-SKU | (Windows 8/8.1/10)
-   Apply: [5] Windows Rearm - Slmgr /rearm     | (Windows 7)
+   Apply: [7] Office  Rearm - Specific KMS SKU ID
 
-   If Office activation is the issue:
+ - Reboot the system and run the activation script, and if unsuccessful, 
 
-   Apply: [6] Office  Rearm - Ospprearm.exe   
+ - Apply: [9] Rebuild Licensing Tokens
 
    Reboot the system and run the activation script, and if unsuccessful, 
 
- - Apply: [8] Rebuild Licensing Tokens
-
-   Reboot the system and run the activation script, and if unsuccessful, 
-
- - Enable debug log in the KMS script and email the debug log to "windowsaddict@protonmail.com"
+ - Enable debug log in the KMS script and share it with me
 
  - As a last step, you may need to do repair install of Windows with an In-place upgrade, 
    check below links for how to.
  
+   Windows 11    - elevenforum.com/t/repair-install-windows-11-with-an-in-place-upgrade.418/
    Windows 10    - tenforums.com/tutorials/16397-repair-install-windows-10-place-upgrade.html
    Windows 8/8.1 - eightforums.com/threads/repair-install-windows-8.26095/
-_______________________________________________________________________________________________________
-
-   Explanation and proposed fix for Office 'Your license isn't genuine' banner:
-
-   pastebin.com/raw/p8hUeDDX
 _______________________________________________________________________________________________________
 
  - If you wish to remove Office and leftovers completely and start clean:

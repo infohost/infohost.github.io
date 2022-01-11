@@ -2,6 +2,8 @@
 <title>Troubleshoot ReadMe - KMS38</title>
 <pre>
 <code>
+These instructions are written in context of Activation Troubleshoot option in MAS.
+
 ________________________________
 
  KMS38 Activation Troubleshoot:
@@ -17,32 +19,38 @@ ________________________________
 
  - Now run the script to activate Windows, and if unsuccessful, 
    Try the troubleshoot button in the Settings > Update & Security > Activation, page.
-   
- - Now run the script to activate Windows, and if unsuccessful, then try additional troubleshoot 
-   steps listed below.
+
+ - If still unsuccessful and you want to try another activator then use,
+   'WinActivate' by @Luzea  https://github.com/luzeadev/winactivate
+
+   Tip - Don't start to search and use other unknown tools found on unreliable sites via google search 
+   result, they may (some already do) ruin your system with malwares.
+
+ - If still unsuccessful then try additional troubleshoot steps listed below.
 _______________________________________________________________________________________________________
 
- - Apply: [2] Dism RestoreHealth
+ - Apply: [4] Dism RestoreHealth
 
    Reboot the system
 
- - Apply: [3] SFC Scannow
+ - Apply: [5] SFC Scannow
 
    Reboot the system (If error found in SFC Scan, run the scan again) and run the activation script, 
    and if unsuccessful, 
 
- - Apply: [C] Clean ClipSVC Licences
+ - Apply: [8] Clean ClipSVC Licences
 
    Reboot the system and run the activation script, and if unsuccessful, 
 
- - Apply: [8] Rebuild Licensing Tokens
+ - Apply: [9] Rebuild Licensing Tokens
 
    Reboot the system and run the activation script, and if unsuccessful, 
 
- - Either try HWID / KMS activation or do repair install of Windows 10 with an In-place upgrade, 
+ - Either try HWID / KMS activation or do repair install of Windows 10-11 with an In-place upgrade, 
    check below link for how to.
  
-   tenforums.com/tutorials/16397-repair-install-windows-10-place-upgrade.html
+   https://www.tenforums.com/tutorials/16397-repair-install-windows-10-place-upgrade.html
+   https://www.elevenforum.com/t/repair-install-windows-11-with-an-in-place-upgrade.418/
 
  * Rearm is not suggested because script already applies Specific APP-SKU rearm if required.
 _______________________________________________________________________________________________________

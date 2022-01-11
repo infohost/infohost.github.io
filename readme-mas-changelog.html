@@ -2,10 +2,88 @@
 <title>MAS Changelog</title>
 <pre>
 <code>
+MAS 1.5
+
+# All
+
+- Support added for Windows build 22483 and later (No wmic.exe issue)
+- Support added for ARM64 architecture in all the scripts
+- Made sure script run fine where path variables are misconfigured in system
+- Made sure script run fine from UNC path
+- Improved text coloring method
+- Script would show an error if ran directly from archive files
+- Scripts would make sure to start from the system's main architecture process
+- All read me files are shifted to online for better update
+- New discord channel https://discord.gg/gjJEfq7ux8 and new main homepage https://windowsaddict.ml/ added
+- Various cosmetic improvements and bug fixes
+
+# HWID / KMS38
+
+- HWID Support added for CloudEdition/N, IoTEnterpriseS editions. (IoTEnterpriseS key will be used to activate EnterpriseS 2021)
+- KMS38 support added for all new Windows 10-11 and Server's, KMS capable edition's including core and acor editions
+- HWID with Lockbox ticket option is added
+  x86-x64 Lockbox slc.dll is created by @mspaintmsi, @qxkqf ported it to ARM64 slc.dll
+- KMS38 Protection and KMS38 uninstall option is added
+- Ticket generation option is added
+- Improved key detection logic, now it can support custom build editions
+- Fixed issues where in certain languages OS's, script would show incorrect status of services
+- Improved script options if required key is not found in script
+- Improved script options if an edition is not supporting HWID currently but may support in future
+
+# Online KMS
+
+- All related scripts are merged in one in separate files version, with onscreen choice options
+- KMS server selection process is improved to make it fail-proof, server numbers are increased to 16
+- Improved error handling and display messages
+- From now on, KMS server IP address will be used for activation instead of hostname to avoid detection by AV's and MS
+- While using manual mode (no renewal task), a non-existent IP 0.0.0.0 will be left in registry to avoid Office non genuine banner issue
+- For renewal task, a separate small script will be used to only renew activation, instead of running full script, every week
+- Base script is updated to use @abbodi1406's latest KMS_VL_ALL-45u (09-Jan-2022)
+  Major changes- 
+  Support added for Windows 10 ARM64, Office 2021, all new Windows and Server editions
+  VBS method will be used for WMI in Windows build 22483 and later
+  Enhanced detection for Office C2R vNext subscriptions
+  Check Activation Status [wmi] will show vNext subscriptions status using vNextDiag.ps1 (require Powershell / WMF 4 or later on Windows 7)
+  Various fixes for Office activation
+  
+# Verify_Files-Clear_Zone.Identifier
+
+- This new script is added in root folder to verify files with hashes and to remove Zone.Identifier from files (to prevent SmartScreen warnings)
+
+# Activation Troubleshoot
+
+- This new script is added in Extras section to deal with activation issues. Various options are added with proper onscreen info and warning's. 
+
+# Change_W10_11_Edition
+
+- Now it can change the Windows editions from Core to Non core too with proper error handling. Works on Windows build 10240 and later
+
+
+
+
+
+
+__________________________________________________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
 MAS 1.4
 
 - Now Microsoft support HWID (Digital License) for Windows 10 LTSC 2019, added key for it in the script.
 - Some minor improvements.
+
+
+
+
+__________________________________________________________________________________________________________________________________________________
+
+
+
 
 
 
@@ -20,6 +98,14 @@ MAS 1.3
 
  - Added a project mirror on github.
  - Some minor improvements
+
+
+
+
+__________________________________________________________________________________________________________________________________________________
+
+
+
 
 
 MAS 1.2
@@ -50,6 +136,17 @@ MAS 1.2
 - Added the offline ReadMe files since nsaneforum topic is only open to members.
 - Removed the vbs check activation method since now @abbodi1406 made WMIC method better than vbs.
 - Created a repository for this tool at Gitlab https://gitlab.com/massgrave/microsoft-activation-scripts
+
+
+
+
+
+__________________________________________________________________________________________________________________________________________________
+
+
+
+
+
 
 
 
@@ -99,6 +196,13 @@ MAS_1.1
 
 
 
+__________________________________________________________________________________________________________________________________________________
+
+
+
+
+
+
 
 MAS_1.0
 
@@ -106,6 +210,14 @@ MAS_1.0
  - Redirected all the read me's to online page for easy online translation.
  - Read Me's Grammatical errors has been fixed by the @BorrowedWifi
  - Some minor tweaks.
+
+
+
+
+__________________________________________________________________________________________________________________________________________________
+
+
+
 
 
 MAS_0.9
@@ -164,6 +276,10 @@ MAS_0.9
 
 
 
+__________________________________________________________________________________________________________________________________________________
+
+
+
 
 
 MAS 0.8
@@ -205,7 +321,15 @@ MAS 0.8
 
 
 
+
+__________________________________________________________________________________________________________________________________________________
+
+
+
+
+
 MAS_0.7
+
 To further make sure that script is clean from av's, following changes were made,
 
 - Multipurpose big scripts are not friendly to the AV's, so i've separated all the scripts.
@@ -237,7 +361,17 @@ Some more changes -
 
 
 
+
+
+__________________________________________________________________________________________________________________________________________________
+
+
+
+
+
+
 MAS_0.6
+
  - Fixed an issue where KMS task creation and deletion show incorrect msg in Non English OS's.
  - Fixed an issue in LTSB 2015 HWID activation. 
  - Added @abbodi1406's Office C2R-Retail2Volume Script https://forums.mydigitallife.net/posts/1150042
@@ -262,7 +396,17 @@ MAS_0.6
 
 
 
+
+
+__________________________________________________________________________________________________________________________________________________
+
+
+
+
+
+
 MAS_0.5
+
 - Updated $OEM$ Folder scripts, so that users can use it easily with any edits and other scripts.
 - Now Read Me and Credits details will open in notepad, for easy browsing.
 - Added confirmation prompt before installing W10 Retail/OEM keys and GVLK option.
@@ -270,7 +414,17 @@ MAS_0.5
 
 
 
+
+
+__________________________________________________________________________________________________________________________________________________
+
+
+
+
+
+
 MAS_0.4
+
 - Removed all the Graphic ASCII characters to avoid errors in editing and viewing of this script in non English os's.
 - Added additional verification in creation and deletion of online KMS task(s).
 - Added 'Create Activation Task' for kms in option, its useful if user ATM don't have Internet and want system to auto activate later.
@@ -282,12 +436,32 @@ MAS_0.4
 
 
 
+
+
+__________________________________________________________________________________________________________________________________________________
+
+
+
+
+
+
 MAS_0.3_BETA
+
 - Abbodi1406 fixed an imp bug in his KMS_VL_ALL Script regarding KMS38, I copied those fix in online KMS script. It also fixes the error (only cosmetic, not imp) in last run result of scheduled task when KMS38 is applied. Now there is no error remains in last run result of scheduled task.
  (Reminder - This online kms script is a fork of abbodi1406's Standalone-Activate-Local.cmd, it was adjusted to work with multi kms server's and renewal task, preactivation, etc. see @credits)
 
 
+
+
+
+__________________________________________________________________________________________________________________________________________________
+
+
+
+
+
 MAS_0.2_BETA
+
 - Added Windows OS checks in HWID, KMS38, and insert keys and change edition option, now these option will only work in Windows 10.
 - Fixed an issue where in certain condition user needs to open the script again to fix non functioning option.
 - Fixed an issue in Digital + KMS preactivation where it was not working correctly. (Critical)
@@ -298,7 +472,17 @@ MAS_0.2_BETA
 - Some other minor changes.
 
 
+
+
+
+__________________________________________________________________________________________________________________________________________________
+
+
+
+
+
 MAS_0.1_BETA First release.
+
 About-
  - Microsoft Activation Script.cmd
    [Windows /server and Office Activator, Open Source and clean from Antivirus Detection]

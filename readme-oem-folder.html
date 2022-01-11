@@ -15,57 +15,64 @@
    Now use this .iso or bootable USB drive to install Windows and it will either already be activated 
    (KMS38) as soon as it boots, or will self-activate at first internet contact.
 
+====================================================================================================
+   Activation Type     Supported Product         Activation Period
+====================================================================================================
 
+   HWID             -  Windows 10-11          -  Permanent
+   KMS38            -  Windows 10-11-Server   -  Until the year 2038
+   Online KMS       -  Windows / Office       -  For 180 Days, renewal task needs to be 
+                                                 created for lifetime auto-activation.
 
-
-
-
-
+   * For more details, use the respective activations read me.
 
 ====================================================================================================
 
-=======================
-   HWID:
-=======================
+========================
+   HWID Pre-Activation:
+========================
 
  - When using Digital License (HWID), no files are stored on the system, and when connected to the 
    internet for the first time, the system will self-activate at that time.
    
-   You can also use the toggle option in the script to extract HWID alternate mode (clientLockboxKey)
-   instead, in that case user 'may' need to reboot system once for automatic activation.
-   
-=======================
-   KMS38:
-=======================
+========================
+   KMS38 Pre-Activation:
+========================
 
  - When using KMS38, no files are stored on the system, and Windows becomes activated immediately 
    without further actions or connectivity of any kind being required.
-   
-==================================================================
-   Online KMS (separately, or in combination with HWID or KMS38):
-==================================================================
 
- - By default it applies the following two methods. You can turn off any of them in setupcomplete.cmd file
+=============================================
+   HWID (Fallback to KMS38) Pre-Activation:
+=============================================
+  
+ - In this method, KMS38 will be used for the activation in case the Windows version is not 
+   supported by HWID. For example, Windows 10 LTSC N 2019 / 2021 and Windows server.
+
+======================================================================
+   Online KMS (separately, or in combination with HWID and/or KMS38):
+======================================================================
+
+ - In this method, a script will run on system login if connected to Internet, which will 
+   activate Windows / Office.
+
+   By default online KMS applies the following two methods. 
+   You can turn off any of them in setupcomplete.cmd file
    _________________________________________________________
 
    1- Automatic Renewal via Task Scheduler---
 
    It creates following files and tasks,
 
-   Files:
-   C:\ProgramData\Online_KMS_Activation\BIN\cleanosppx64.exe
-   C:\ProgramData\Online_KMS_Activation\BIN\cleanosppx86.exe
-   C:\ProgramData\Online_KMS_Activation\Activate.cmd
-   C:\ProgramData\Online_KMS_Activation\Info.txt
+   - Scheduled tasks
+     \Online_KMS_Activation_Script-Renewal   (Renewal Task / Weekly)
+     \Online_KMS_Activation_Script-Run_Once  (Activation Task / runs on system login and deletes itself once activated)
+     The scheduled tasks runs only if the system is connected to the Internet.
 
-   Scheduled Tasks:
-   \Online_KMS_Activation_Script-Renewal  (Weekly)
-   \Online_KMS_Activation_Script-Run_Once (Activation Task)
-
-   The scheduled task runs only if the system is connected to the Internet.
-   Activation Task will run on the system login and after successful activation and registering 
-   online KMS server, this task will delete itself. leaving behind only one task to run weekly 
-   for the lifetime of the system.
+   - Files
+     C:\ProgramData\Online_KMS_Activation\Activate_tsk.cmd
+     C:\ProgramData\Online_KMS_Activation\Info.html
+     C:\ProgramData\Online_KMS_Activation\Logs.txt
    _________________________________________________________
    
    2- Manual Renewal via Desktop Context Menu---
@@ -73,91 +80,27 @@
    It creates Desktop context Menu for manual activation and renewal.
    It creates the following files and registry entries.
 
-   Files:
-   C:\ProgramData\Online_KMS_Activation\BIN\cleanosppx64.exe
-   C:\ProgramData\Online_KMS_Activation\BIN\cleanosppx86.exe
-   C:\ProgramData\Online_KMS_Activation\Activate.cmd
-   C:\ProgramData\Online_KMS_Activation\Info.txt
-   
-   Registry entries:
-   HKCR\DesktopBackground\shell\Activate Windows - Office
-   HKCR\DesktopBackground\shell\Activate Windows - Office\command
+   - Registry
+     HKCR\DesktopBackground\shell\Activate Windows - Office
+
+   - Files
+     C:\ProgramData\Online_KMS_Activation\Activate_dcm.cmd
+     C:\ProgramData\Online_KMS_Activation\Info.html
+     C:\ProgramData\Online_KMS_Activation\BIN\cleanosppx64.exe
+     C:\ProgramData\Online_KMS_Activation\BIN\cleanosppx86.exe
 
    It creates an easy to reach the Desktop context menu for the manual activation renewal.
-   _________________________________________________________
 
-   d30a0e4e5911d3ca705617d17225372731c770e2 *cleanosppx64.exe                   Virus Total = 0/71
-   39ed8659e7ca16aaccb86def94ce6cec4c847dd6 *cleanosppx86.exe                   Virus Total = 1/72
-
-   Virus total report date: 2020-03-31
- * Virus total report and antivirus real-time scan report upon file execution can be different.
-   
- - These files are used in cleaning office license in C2R Retail office to VL conversion process.
-   
- - These files are taken from the old version of Microsoft official tool 'O15CTRRemove.diagcab'.
-
-   56c6ca76993a96cf9a255463b90db96cb9d24464 *O15CTRRemove.diagcab (Digitally signed)
-
-   You can get the file from https://0x0.st/-Coz   Mirror: http://tiny.cc/dhcamz
+   Further read: https://windowsaddict.ml/readme-programdata-online-kms-files.html
    _________________________________________________________
    
-   Important note - Some sensitive AV's may flag the Automatic Renewal via the Task, and not 
-   because of KMS, because for them it's suspicious to run long scripts in the background as Tasks.
-
-   It's recommended to set exclusions in Antivirus for
-   C:\ProgramData\Online_KMS_Activation\Activate.cmd
-   or
-   Turn off Automatic Renewal via Task Scheduler in the setupcomplete.cmd file and only use 
-   Manual Renewal via Desktop Context Menu.
-   _________________________________________________________
-   
- - When using Online KMS plus HWID Digital License, Online KMS script will be set to skip Windows 
-   activation if the HWID activation was applied but was not successful due to lack of internet 
-   at the time of installation of Windows, but will register the KMS for other products, and all 
-   later installed Volume License (VL) products (MS Office) will self-activate when going online. 
+ - When using Online KMS plus HWID Digital License, Online KMS script will be set to only activate
+   Office if the HWID activation is supported for Windows.
 
  - When using Online KMS plus KMS38, Online KMS will not skip Windows activation but skip KMS38 
-   activation and will register the KMS for other products, and all subsequently-installed Volume 
-   License (VL) products (MS Office) will self-activate when going online.
-
-====================================
-   HWID (Fallback to KMS38):
-====================================
-  
- - In this method, KMS38 will be used for the activation in case the Windows version is not 
-   supported by HWID. For example, Windows 10 LTSC and Windows server.
+   activation and will register the KMS for other products.
 
 ====================================================================================================
-
-
-
-
-
-
-====================================
-   Info:
-====================================
-
-
-
-- In each preactivation method, a Read_Me.txt file will be created on the desktop to let the user
-  know which method was used and how it's supposed to work.
-  
-  You can turn it off in the setupcomplete.file
-
-____________________________________________________________________________________________________
-
-   Activation Type       Supported Product             Activation Period
-____________________________________________________________________________________________________
-   
-   Digital License    -  Windows 10                 -  Permanent
-   KMS38              -  Windows 10 / Server        -  Until the year 2038
-   Online KMS         -  Windows / Server / Office  -  For 180 Days, renewal task needs to be 
-                                                       created for lifetime auto-activation.
-____________________________________________________________________________________________________
-   
-   * For more details, use the ReadMe.txt included in the respective activation folders.
-   
 </code></pre>
 
 <p>&nbsp;</p>

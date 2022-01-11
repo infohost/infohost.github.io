@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <title>Read Me - Online KMS</title>
 <pre>
-<code>====================================================================================================
+<code>
+====================================================================================================
    Online KMS Activation:
 ====================================================================================================
 
@@ -9,11 +10,11 @@
 
    - is a fork of @abbodi1406's KMS_VL_ALL Script  forums.mydigitallife.net/posts/838808
      this fork's purpose is to avoid having any KMS binary files and activate Windows / Office using 
-     only transparent batch script with online public KMS servers.
+     only transparent batch script with online public KMS servers IP (Not hostname).
 
    - activate Windows / Office for 180 Days, for Core / ProWMC editions it is 30/45 Days. 
    - can activate both Retail and VL Windows installation.
-   - can activate C2R Retail and VL Office, but not 2010/2013 MSI Retail Office. 
+   - can activate C2R Retail and VL Office, but not 2010/2013 MSI Retail Office and UWP Office. 
    - skip the activation of any permanently / KMS38 activated product.
 
    As mentioned, it activates only for a limited period and it's not permanent, read below on how 
@@ -30,10 +31,8 @@ _______________________________________
    If the system cannot contact the server, it will be deactivated after 180 days and it will 
    remain deactivated until contact can be restored.
 
- - The KMS servers I've added have been working steadily, but there can be no guarantee that   
-   they will remain online indefinitely. In case when a registered server goes down, and you want 
-   lifetime activation, you either need to create an automatic renewal task, or manually renew the 
-   activation whenever required.
+ - To get the lifetime activation, you either need to create an automatic renewal task, or manually
+   renew the activation whenever required.
 
    There are 3 ways you can renew the KMS server and as a result, renew the activation.
 _______________________________________
@@ -48,32 +47,25 @@ _______________________________________
    C:\ProgramData\Online_KMS_Activation\BIN\cleanosppx64.exe
    C:\ProgramData\Online_KMS_Activation\BIN\cleanosppx86.exe
    C:\ProgramData\Online_KMS_Activation\Activate_dcm.cmd
-   C:\ProgramData\Online_KMS_Activation\Info.txt
+   C:\ProgramData\Online_KMS_Activation\Info.html
 
    and create registry entries in,
    HKCR\DesktopBackground\shell\Activate Windows - Office
 
    It creates an easy to reach Desktop context menu for the manual activation renewal.
-   (*It has limited menu options, renewal setup install and uninstall options are not there)
 _______________________________________
 
  3- Automatic KMS server Renewal via Task Scheduler:
    
    This method put the following files in,
    C:\ProgramData\Online_KMS_Activation\Activate_tsk.cmd
-   C:\ProgramData\Online_KMS_Activation\Info.txt
+   C:\ProgramData\Online_KMS_Activation\Info.html
 
    And creates a scheduled task (Renewal) to run the script every 7 days.
    This task register the working KMS server and trigger activation command only for the installed 
    Volume products.
 
    The scheduled task runs only if the system is connected to the Internet.
-  
-   Note - Some sensitive Anti-virus's may flag the Automatic Renewal via the Task,
-   You may need to set an exclusion for the below file in your Antivirus Program.
-   C:\ProgramData\Online_KMS_Activation\Activate_tsk.cmd
-   or
-   use the 1st or 2nd option for activation renewal.
 
 ____________________________________________________________________________________________________
 
@@ -81,26 +73,20 @@ ________________________________________________________________________________
 _______________________________________
 
  - With KMS Activation, you can update Windows/Office without any issues.
- 
- - This Online KMS Activation provides immediate global activation for Windows 8.1 and Windows 10, which 
-   means that in the following three scenarios, the system will self-activate when connected to the 
-   internet, and also means that users will not need to manually run the activation script again.
-
-   Scenario 1: Subsequent installation or alteration of any 2013, 2016, or 2019 Volume License 
-               (VL) Office product.
-   Scenario 2: Windows edition change (with GVLK).
-   Scenario 3: Date change, system hardware change, etc.
 
  - What is left in the system in the activation process?
+   
    - Activation via Online KMS Script
-     After activation, it leaves only the KMS Server name in the registry, which helps you to get the
-     above-mentioned global activation feature whereby the system auto-renews the activations,
-     so it's a good thing if you leave the server name in the registry.
-     However, you can clear this registered KMS Server name upon activation with options in script.
 
-     What is left in the system when Renewal methods are installed, has been mentioned above.
+	 If Renewal Task is installed: 
+     After activation, it leaves the KMS Server IP in the registry, which helps you to get the
+     global activation feature whereby the system auto-renews the activations.
+     About files and scheduled task, it has been mentioned above.
 
- - This script includes the most-stable KMS servers (15) list from all over the world. The server 
+	 If Renewal Task is NOT installed: 
+     It leaves a non-existent IP 0.0.0.0 to avoid Office Not Genuine Banner issue.
+
+ - This script includes the most-stable KMS servers (16) list from all over the world. The server 
    selection process is fully automatic. Script randomly select a server, tests if it's online, 
    if yes then apply the activation command, if fails, then retry this process maximum of total 
    4 times for a product. Such redundancy makes sure that we get the working KMS server any time.
@@ -113,15 +99,29 @@ _______________________________________
    So this is for those who don't like/have difficulties/trust issues in offline KMS because of its 
    binary files and antivirus detections.
 
-   But if you prefer offline KMS then checkout an awesome open-source activator, 
+   But if you prefer offline KMS then checkout an open-source activator, 
    @abbodi1406's KMS_VL_ALL   forums.mydigitallife.net/posts/838808        pastebin.com/raw/cpdmr6HZ
+
+====================================================================================================
+   Office C2R 'Your license isn't genuine' notification banner:
+====================================================================================================
+
+ - Office Click-to-Run builds (since February 2021) that are activated with KMS checks the existence of the KMS server name in the registry.
+ 
+ - If KMS server is not present, a banner is shown in Office programs notifying that "Office isn't licensed properly", see here.
+ 
+ - Therefore in manual mode, KeyManagementServiceName value containing a non-existent IP address 0.0.0.0 will be kept in the below registry keys:
+   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform
+   HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform
+   This is perfectly fine to keep, and it does not affect Windows or Office activation.
+   Fore more explanation, visit https://windowsaddict.ml/office-license-is-not-genuine
 
 ====================================================================================================
    Miscellaneous:
 ====================================================================================================
 
    How does KMS activation work? Is there any downsides compared to genuine activation?
-   https://pastebin.com/raw/7Xyaf15Z
+   https://windowsaddict.ml/readme-activation-faq.html
 
 _______________________________________
 
@@ -138,6 +138,8 @@ _______________________________________
 
    How to undo the KMS activation for Windows? I want to activate with my own activation key.
 
+   - Use uninstall option from the KMS script.
+
    - Open CMD as admin and enter your activation key (non KMS key) with the below command,
      slmgr /ipk *****-*****-*****-*****-*****
 
@@ -152,33 +154,74 @@ ________________________________________________________________
 
    Generic Volume License Key       Edition                
    
-   Windows 10
+   Windows 11 [Co]
    
+   37D7F-N49CB-WQR8W-TBJ73-FM8RX    SE {Cloud}
+   6XN7V-PCBDC-BDBRH-8DQY7-G6R44    SE N {Cloud N}
+   
+   Windows 10 / 11
+
+   M7XTQ-FN8P6-TTKYV-9D4CC-J462D    Enterprise LTSC 2019
+   92NFX-8DJQP-P6BBQ-THF9C-7CG2H    Enterprise LTSC 2019 N
+   CPWHC-NT2C7-VYW78-DHDB2-PG3GK    Enterprise for Virtual Desktops
+   NBTWJ-3DR69-3C4V8-C26MC-GQ9M6    Lean
+   NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J    Pro Workstation
+   9FNHH-K3HBT-3W4TD-6383H-6XYWF    Pro Workstation N
+   7NBT4-WGBQX-MP4H7-QXFF8-YP3KX    Enterprise Remote Server
+   YYVX9-NTFWV-6MDM3-9PT4T-4M68B    Enterprise G
+   44RPN-FTY23-9VTTB-MP9BX-T84FV    Enterprise G N
+   DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ    Enterprise 2016 LTSB
+   QFFDN-GRT3P-VKWWX-X7T3R-8B639    Enterprise 2016 LTSB N
+   6TP4R-GNPTD-KYYHQ-7B7DP-J447Y    Pro Education
+   YVWGF-BXNMC-HTQYQ-CPQ99-66QFC    Pro Education N
    TX9XD-98N7V-6WMQ6-BX7FG-H8Q99    Home
    3KHY7-WNT83-DGQKR-F7HPR-844BM    Home N
    7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH    Home Single Language
    PVMJN-6DFY6-9CCP6-7BKTT-D3WVR    Home China
    W269N-WFGWX-YVC9B-4J6C9-T83GX    Pro
    MH37W-N47XK-V7XM9-C7227-GCQG9    Pro N
-   6TP4R-GNPTD-KYYHQ-7B7DP-J447Y    Pro Education
-   YVWGF-BXNMC-HTQYQ-CPQ99-66QFC    Pro Education N
-   NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J    Pro Workstation
-   9FNHH-K3HBT-3W4TD-6383H-6XYWF    Pro Workstation N
    NW6C2-QMPVW-D7KKK-3GKT6-VCFB2    Education
    2WH4N-8QGBV-H22JP-CT43Q-MDWWJ    Education N
    NPPR9-FWDCX-D2C8J-H872K-2YT43    Enterprise
    DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4    Enterprise N
-   YYVX9-NTFWV-6MDM3-9PT4T-4M68B    Enterprise G
-   44RPN-FTY23-9VTTB-MP9BX-T84FV    Enterprise G N
    WNMTR-4C88C-JK8YV-HQ7T2-76DF9    Enterprise 2015 LTSB
    2F77B-TNFGY-69QQF-B8YKP-D69TJ    Enterprise 2015 LTSB N
-   DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ    Enterprise 2016 LTSB
-   QFFDN-GRT3P-VKWWX-X7T3R-8B639    Enterprise 2016 LTSB N
-   M7XTQ-FN8P6-TTKYV-9D4CC-J462D    Enterprise LTSC 2019
-   92NFX-8DJQP-P6BBQ-THF9C-7CG2H    Enterprise LTSC 2019 N
-   CPWHC-NT2C7-VYW78-DHDB2-PG3GK    Enterprise for Virtual Desktops
-   7NBT4-WGBQX-MP4H7-QXFF8-YP3KX    Remote Server
-   NBTWJ-3DR69-3C4V8-C26MC-GQ9M6    Lean
+   
+   Windows Server 2022 [Fe]
+   
+   VDYBN-27WPP-V4HQT-9VMD4-VMK7H    Standard
+   WX4NM-KYWYW-QJJR4-XV3QB-6VM33    Datacenter
+   6N379-GGTMK-23C6M-XVVTC-CKFRQ    Azure Core
+   67KN8-4FYJW-2487Q-MQ2J7-4C4RG    Standard ACor
+   QFND9-D3Y9C-J3KKY-6RPVP-2DPYV    Datacenter ACor
+   
+   Windows Server 2019 [RS5]
+   
+   N69G4-B89J2-4G8F4-WWYCC-J464C    Standard
+   WMDGN-G9PQG-XVVXX-R3X43-63DFG    Datacenter
+   FDNH6-VW9RW-BXPJ7-4XTYG-239TB    Azure Core
+   N2KJX-J94YW-TQVFB-DG9YT-724CC    Standard ACor
+   6NMRW-2C8FM-D24W7-TQWMY-CWH2D    Datacenter ACor
+   WVDHN-86M7X-466P6-VHXV7-YY726    Essentials
+   GRFBW-QNDC4-6QBHG-CCK3B-2PR88    ServerARM64
+   NTBV8-9K7Q8-V27C6-M2BTV-KHMXV    Azure Datacenter - ServerTurbine
+   
+   Windows Server 2016 [RS4]
+   
+   K9FYF-G6NCK-73M32-XMVPY-F9DRR    ServerARM64
+   
+   Windows Server 2016 [RS3]
+   
+   PTXN8-JFHJM-4WC78-MPCBR-9W4KR    Standard ACor
+   2HXDN-KRXHB-GPYC7-YCKFJ-7FVDG    Datacenter ACor
+   
+   Windows Server 2016 [RS1]
+   
+   WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY    Standard
+   CB7KF-BWN84-R7R2Y-793K2-8XDDG    Datacenter
+   VP34G-4NPPG-79JTQ-864T4-R3MQX    Azure Core
+   JCKRF-N37P4-C2D82-9YXRT-4M63B    Essentials
+   QN4C6-GBJD2-FB422-GHWJK-GJG2R    Cloud Storage
    
    Windows 8.1
    
@@ -202,6 +245,13 @@ ________________________________________________________________
    MX3RK-9HNGX-K3QKC-6PJ3F-W8D7B    Pro for Students
    TNFGH-2R6PB-8XM3K-QYHX2-J4296    Pro for Students N
    
+   Windows Server 2012 R2
+   
+   D2N9P-3P6X9-2R39C-7RTCD-MDVJX    Standard
+   W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9    Datacenter
+   KNC87-3J2TX-XB4WP-VCPJV-M4FWM    Essentials
+   3NPTF-33KPT-GGBPR-YX76B-39KDD    Cloud Storage
+   
    Windows 8
    
    BN3D2-R7TKB-3YPBD-8DRP2-27GG4    Core
@@ -217,6 +267,13 @@ ________________________________________________________________
    RYXVT-BNQG7-VD29F-DBMRY-HT73M    Embedded Industry Pro
    NKB3R-R2F8T-3XCDP-7Q2KW-XWYQ2    Embedded Industry Enterprise
    
+   Windows Server 2012
+   
+   XC9B7-NBPP2-83J2H-RHMBY-92BT4    Standard
+   48HP8-DN98B-MYWDG-T2DCC-8W83P    Datacenter
+   HM7DN-YVMH3-46JC3-XYTG7-CYQJJ    MultiPoint Standard
+   XNH6W-2V9GX-RGJ4K-Y8X6F-QGJ2G    MultiPoint Premium
+   
    Windows 7
    
    FJ82H-XT6CR-J8D7P-XQJJ2-GPDD4    Professional
@@ -228,48 +285,6 @@ ________________________________________________________________
    YBYF6-BHCR3-JPKRB-CDW7B-F9BK4    Embedded POSReady 7
    XGY72-BRBBT-FF8MH-2GG8H-W7KCW    Embedded Standard
    73KQT-CD9G6-K7TQG-66MRP-CQ22C    Embedded ThinPC
-
-   Windows Server 2019 [RS5]
-
-   N69G4-B89J2-4G8F4-WWYCC-J464C    Standard
-   WMDGN-G9PQG-XVVXX-R3X43-63DFG    Datacenter
-   WVDHN-86M7X-466P6-VHXV7-YY726    Essentials
-   FDNH6-VW9RW-BXPJ7-4XTYG-239TB    Azure Core
-   N2KJX-J94YW-TQVFB-DG9YT-724CC    Standard ACor
-   6NMRW-2C8FM-D24W7-TQWMY-CWH2D    Datacenter ACor
-   GRFBW-QNDC4-6QBHG-CCK3B-2PR88    ServerARM64
-   NTBV8-9K7Q8-V27C6-M2BTV-KHMXV    Azure Datacenter - ServerTurbine
-
-   Windows Server 2016 [RS4]
-
-   K9FYF-G6NCK-73M32-XMVPY-F9DRR    ServerARM64
-
-   Windows Server 2016 [RS3]
-
-   PTXN8-JFHJM-4WC78-MPCBR-9W4KR    Standard ACor
-   2HXDN-KRXHB-GPYC7-YCKFJ-7FVDG    Datacenter ACor
-
-   Windows Server 2016 [RS1]
-
-   WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY    Standard
-   CB7KF-BWN84-R7R2Y-793K2-8XDDG    Datacenter
-   JCKRF-N37P4-C2D82-9YXRT-4M63B    Essentials
-   QN4C6-GBJD2-FB422-GHWJK-GJG2R    Cloud Storage
-   VP34G-4NPPG-79JTQ-864T4-R3MQX    Azure Core
-   
-   Windows Server 2012 R2
-   
-   D2N9P-3P6X9-2R39C-7RTCD-MDVJX    Standard
-   W3GGN-FT8W3-Y4M27-J84CP-Q3VJ9    Datacenter
-   KNC87-3J2TX-XB4WP-VCPJV-M4FWM    Essentials
-   3NPTF-33KPT-GGBPR-YX76B-39KDD    Cloud Storage
-   
-   Windows Server 2012
-   
-   XC9B7-NBPP2-83J2H-RHMBY-92BT4    Standard
-   48HP8-DN98B-MYWDG-T2DCC-8W83P    Datacenter
-   HM7DN-YVMH3-46JC3-XYTG7-CYQJJ    MultiPoint Standard
-   XNH6W-2V9GX-RGJ4K-Y8X6F-QGJ2G    MultiPoint Premium
    
    Windows Server 2008 R2
    
@@ -281,14 +296,15 @@ ________________________________________________________________
    GT63C-RJFQ3-4GMB6-BRFB9-CB83V    Itanium
    736RG-XDKJK-V34PF-BHK87-J6X3K    MultiPoint Server - ServerEmbeddedSolution
 
+
 ________________________________________________________________
 
    Office
 ___________
 
-   Office Volume 2010 / 2013 / 2016 / 2019
+   Office Volume 2010 / 2013 / 2016 / 2019 / 2021
 
-   Office C2R Retail O365/2013/2016/2019
+   Office C2R Retail O365/2013/2016/2019/2021
 ________________________________________________________________
 
    Notes:
@@ -334,7 +350,7 @@ ________________________________________________________________
 
    Notes:
 
-   Supported Click-to-Run products: Office 365, Office 2019, Office 2016, Office 2013
+   Supported Click-to-Run products: Office 365, Office 2021, Office 2019, Office 2016, Office 2013
    Activated Office Retail products will be skipped from conversion
    Office 365 itself does not have volume licenses, therefore it will be converted to Office Mondo licenses
    Office Professional suite will be converted with Office ProPlus licenses
@@ -351,26 +367,24 @@ ________________________________________________________________
 
    You can also use other tools that can convert licensing:
 
-   OfficeRTool (supports Office UWP)  https://forums.mydigitallife.net/posts/1125229/
    Office Tool Plus https://otp.landian.vip
 
 ====================================================================================================
-   .exe Files Details:
+   .exe File Details:
 ====================================================================================================
 
-   d30a0e4e5911d3ca705617d17225372731c770e2 *cleanosppx64.exe                   Virus Total = 0/68
-   39ed8659e7ca16aaccb86def94ce6cec4c847dd6 *cleanosppx86.exe                   Virus Total = 0/68
+   cleanosppx64.exe        SHA-1: d30a0e4e5911d3ca705617d17225372731c770e2         Virus Total: 0/68
+   cleanosppx86.exe        SHA-1: 39ed8659e7ca16aaccb86def94ce6cec4c847dd6         Virus Total: 1/51
 
-   Virus total report date: 2020-08-31
- * Virus total report and antivirus real-time scan report upon file execution can be different.
+   Virus total (virustotal.com) report date: 2022-01-09
+   Virus total report and antivirus real-time scan report upon file execution can be different.
    
  - These files are used in cleaning office license in C2R Retail office to VL conversion process.
-   
  - These files are taken from the old version of Microsoft official tool 'O15CTRRemove.diagcab'.
 
-   56c6ca76993a96cf9a255463b90db96cb9d24464 *O15CTRRemove.diagcab (Digitally signed)
-
-   You can get the file from https://0x0.st/-Coz   Mirror: http://tiny.cc/dhcamz
+    File: O15CTRRemove.diagcab                           (Digitally Signed)
+    Link: app.box.com/s/n8qpb5ljmv6djp77w5p6fk043dm6s3r1 (Unofficial Link)
+   SHA-1: 56c6ca76993a96cf9a255463b90db96cb9d24464
 
 ====================================================================================================
    Check Activation Status:
@@ -381,41 +395,32 @@ _______________________________________
 
    Check Activation Status [vbs]:
 
-   Query and execute official licensing VBScripts: slmgr.vbs for Windows, ospp.vbs for Office
+   query and execute official licensing VBScripts: slmgr.vbs for Windows, ospp.vbs for Office
+   shows the activation expiration date for Windows
    Office 2010 ospp.vbs shows a very little info
 _______________________________________
 
-   Check Activation Status [wmic]:
+   Check Activation Status [wmi]:
 
-   Query and execute native WMI functions, no vbscripting involved
-   It shows extra more info (SKU ID, key channel)
-   It shows the activation expiration date for all products
-   It shows more detailed info for Office 2010
-   It can show the status of Office UWP apps
+   query and execute WMI functions using wmic.exe or VBScripts
+   shows extra more info (SKU ID, key channel)
+   shows the activation expiration date for all products
+   shows more detailed info for Office 2010
+   can show the status of Office UWP apps
+   implement vNextDiag.ps1 functions to detect new Office 365 vNext licenses and subscriptions
 
 ====================================================================================================
    Advanced options:
 ====================================================================================================
 
-   * You can use below options either by using GUI in the script or by editing the file 
-     'Online_KMS_Activation\Activate.cmd' from 'MAS' separate files version.
+   * You can use below options by using choice menu in the script.
+  
 _______________________________________
 
    Debug Mode:-
 
    When the activation is run with Debug Mode enabled, it creates a log file which contains full 
    details of activation process, this is useful to detect activation errors.
-_______________________________________
-
-   Clear KMS Cache:-
-
-   By default, the KMS activation leaves KMS server address (cache) in the registry. 
-   When this mode is on, it clears KMS cache after the activation.
-
-   Registered KMS server enables the system to automatically renew the license for the next 180 days,
-   every 7 days, as long as the server is online (means the activation will never expire).
-   This process is the same as how the legal KMS works, so no security program will flag this 
-   behaviour. It's better to leave this option as default, off.
 _______________________________________
 
    Convert Office C2R-R2V:-
@@ -426,14 +431,8 @@ _______________________________________
 
    Skip Windows 10 KMS38:-
 
-   The script is set by default to check and skip Windows 10 activation if KMS 2038 is detected.
+   The script is set by default to check and skip Windows activation if KMS 2038 is detected.
    However, if you want to revert to normal KMS activation, you can turn it off.
-_______________________________________
-
-   Set a KMS Server:-
-
-   The script is set by default to check various KMS servers and select which is online.
-   However, if you want to use only any specific KMS server then you can use this option.
 
 ====================================================================================================
    Command line Switches:
@@ -462,9 +461,6 @@ _______________________________________
    Turn OFF Office C2R-R2V conversion:
    /nc
 
-   Clear KMS cache after activation:
-   /c
-
    Do not skip Windows 10 KMS38:
    /x
 
@@ -473,10 +469,6 @@ _______________________________________
 
    Silent and create simple log in current directory:
    /L
-
-   Use a specific KMS server:
-
-   pseudo.kms.server
 _______________________________________
 
    Create Renewal Task:- 
@@ -499,150 +491,6 @@ _______________________________________
    /uni
 
 ====================================================================================================
-   Manual Activation Process:
-====================================================================================================
-
- - Prerequisite:
-
-   Online Public KMS Server List: 
-
-   kms.kure tru.com
-   kms.srv.c rsoo.com
-   kms.qk eke.com
-   kms.moe club.org
-   kms.cang shui.net
-   kms.p ub
-   kms.ia ini.net
-   kms.lo li.best
-   kms.zhux iaole.org
-   kms8.MS Guides.com
-   kms.lo li.beer
-   kms.ij io.net
-   kms.ca ry.tech
-   kms.lib rary.hk
-   kms.v0 v.bid
-
-   (*list is in random order)
-   (*remove the space in the middle when using)
- 
-   Generic Volume License Key (GVLK):
-
-   Keys are listed above in Supported Products section.
-__________________________________________
-
-   Windows / Server (Supported Versions) 
-__________________________________________
-   
- - Connect to the internet. 
- - Open CMD as Admin, and enter the following listed commands in the sequence in which they are given.
- - Enter Generic Volume License Key (GVLK) (Replace %key% with the key) with the following command:
-
-slmgr /ipk %key%
-
- - Register the KMS Server, (Replace %server% with one of the above-listed servers) 
-   (If activation is unsuccessful then try a different server) with the following command:
-
-slmgr /skms %server%
-
- - Activate Windows with the following command:
-   
-slmgr /ato
-   
- - Check Activation Status with the following command:
-
-slmgr /dli
-   
- - Clear the name of the KMS server (Optional) (It'll prevent activation auto-renewal) with the following command: 
-   
-slmgr /ckms
-   
- - Done. 
-___________________________________________________________
-
-   Office VL Activation (Office 2010, 2013, 2016, 2019) -
-___________________________________________________________
-   
- - Connect to the internet. 
- - Open CMD as Admin, and enter the following listed commands in the sequence in which they are given.
- - If Office is installed as VL (Volume License) then there is no need to enter its key. 
- - If Office is installed as Retail, then you need to convert it to VL, by using C2R-R2V by @abbodi1406
-   https://forums.mydigitallife.net/posts/1150042 
-
- - Change to the directory where Office is installed.
-   If Office is 32-bit on 32-bit Windows or 64-bit Office on 64-bit Windows use the following:
-   
-   For Office 2016 or 2019 enter the command:
-   
-cd "C:\Program Files\Microsoft Office\Office16"
-   
-   For Office 2013 enter the command:
-   
-cd "C:\Program Files\Microsoft Office\Office15"
-   
-   For Office 2010 enter the command:
-   
-cd "C:\Program Files\Microsoft Office\Office14"
-   
-   --------------------------------------------------------------------------------
-   
-   If Office is 32-bit on 64-bit Windows, use the following:
-   
-   For Office 2016 or 2019 enter the command:
-   
-cd "C:\Program Files (x86)\Microsoft Office\Office16"
-   
-   For Office 2013 enter the command:
-   
-cd "C:\Program Files (x86)\Microsoft Office\Office15"
-   
-   For Office 2010 enter the command:
-   
-cd "C:\Program Files (x86)\Microsoft Office\Office14"
-   
-   --------------------------------------------------------------------------------
-   
- - Once all of that is done correctly, now register the KMS Server, (In the following,
-   replace %server% with one of the above-listed servers) (If activation is unsuccessful 
-   then try a different server) with the following command:
-
-cscript ospp.vbs /sethst:%server% 
-
- - Activate Office with the following command: 
-   
-cscript ospp.vbs /act 
-   
- - Check Activation Status with the following command:
-   
-cscript ospp.vbs /dstatus
- 
- - Clear the name of the KMS server, (Optional) (It'll prevent activation auto-renewal)
-   
-   Below commands can be used to completely clean the KMS activation remnants from the system,
-   for both windows and office.
-
-set OPPk=SOFTWARE\Microsoft\OfficeSoftwareProtectionPlatform
-set SPPk=SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform
-set _wApp=55c92734-d682-4d71-983e-d6ec3f16059f
-set _oApp=0ff1ce15-a989-479d-af46-f275c6370663
-set _oA14=59a52881-a989-479d-af46-f275c6370663
-reg delete "HKLM\%SPPk%\%_wApp%" /f
-reg delete "HKLM\%SPPk%\%_oApp%" /f
-reg delete "HKLM\%SPPk%" /f /v DisableDnsPublishing
-reg delete "HKLM\%SPPk%" /f /v DisableKeyManagementServiceHostCaching
-reg delete "HKLM\%SPPk%" /f /v KeyManagementServiceName
-reg delete "HKLM\%SPPk%" /f /v KeyManagementServicePort
-reg delete "HKU\S-1-5-20\%SPPk%\%_wApp%" /f
-reg delete "HKU\S-1-5-20\%SPPk%\%_oApp%" /f
-reg delete "HKLM\%OPPk%\%_oA14%" /f
-reg delete "HKLM\%OPPk%\%_oApp%" /f
-reg delete "HKLM\%OPPk%" /f /v DisableDnsPublishing
-reg delete "HKLM\%OPPk%" /f /v DisableKeyManagementServiceHostCaching
-reg delete "HKLM\%OPPk%" /f /v KeyManagementServiceName
-reg delete "HKLM\%OPPk%" /f /v KeyManagementServicePort
-
- - Done. 
-
-====================================================================================================
    Credits:
 ====================================================================================================
 
@@ -655,38 +503,34 @@ reg delete "HKLM\%OPPk%" /f /v KeyManagementServicePort
 _______________________________________
 
    Thanks to the maintainers of the following 'online public KMS servers' for providing the service.
-   *In random order
+   *ignore underscore
 
-   kms.kure tru.com
-   kms.srv.c rsoo.com
-   kms.qk eke.com
-   kms.moe club.org
-   kms.cang shui.net
-   kms.p ub
-   kms.ia ini.net
-   kms.lo li.best
-   kms.zhux iaole.org
-   kms8.MS Guides.com
-   kms.lo li.beer
-   kms.ij io.net
-   kms.ca ry.tech
-   kms.lib rary.hk
-   kms.v0 v.bid
+   222.18___4.9.98
+   kms.ku___retru.com
+   xinche___ng213618.cn
+   kms.si___xyin.com
+   kms.mo___eclub.org
+   kms.cg___tsoft.com
+   kms.he___ng07.com
+   kms.mo___eyuuko.com
+   kms.lo___li.best
+   kms.zh___uxiaole.org
+   kms.ca___tqu.com
+   kms.lo___li.beer
+   kms.ca___ry.tech
+   kms.wx___lost.com
+   kms.mo___eyuuko.top
+   kms.gh___pym.com
 _______________________________________
 
-   Online KMS Activation Script is a part of 'Microsoft Activation Scripts' project.
+   Online KMS Activation Script is a part of 'Microsoft Activation Scripts' (MAS) project.
    
-   Homepages-
-   
-   GitHub:       github.com/massgravel/microsoft-activation-scripts
-   GitLab:       gitlab.com/massgrave/microsoft-activation-scripts
- 
-   Discord:      discord.gg/YkK3qua
-   NsaneForums:  nsaneforums.com/topic/316668--
- 
-   Email:        windowsaddict@protonmail.com
+   Homepage: windowsaddict.ml
+      Email: windowsaddict@protonmail.com
 
-====================================================================================================</code></pre>
+====================================================================================================
+
+</code></pre>
 
 <p>&nbsp;</p>
 
