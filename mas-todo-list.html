@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<title>MAS Todo List</title>
+<title>MAS Issues / Todo List</title>
 <pre>
 <code>
 
-
-   MAS Todo List
+   MAS Issues List:
    
- - Update read me files with better format and content
- - Remove clipup.exe from AIO and keep it in Separate files version only (People don't really use KMS38 to activate Server Core/Acor
+ - Cosmetic error: Showing product name Windows 10 in Windows 11 system in HWID/KMS38 scripts.
+                   Reason: Product name registry is not updated in windows 11, didn't use WMI method because changes reflects in late when edition is changed
+                   Solution: Replace Windows 10 with 11 in reg query product name (to be updated in MAS v1.6)
+
+
+   MAS Todo List:
+   
+ - Update read me's with better format and content
  - Simplify removal of Zone.Identifier in script "Verify_Files-Clear_Zone.Identifier-68.cmd"
  - Updated slc.dll for lockbox method, so that separate slc.dll is not required for ARM64
  - Test the scripts with various av's and find which commands or series of commands av's are complaining about and find alternatives
- - Find what is more AV friendly method to access WMI - VBS or PowerShell, and apply in scripts accordingly
  - Do more testing and find bugs
  - More improvements in KMS script
- - Find a way to get accurate Windows Product name. (Usual registry and wmi options don't produce accurate results in all conditions)
- 
+ - Show warning to clean subscription license in KMS script when expired Office subscription license is detected. It prevents volume license to take effect in activation
+ - Make HWID/KMS38 scripts futureproof for new Windows editions by getting required key from system itself
 </code></pre>
 
 <p>&nbsp;</p>
