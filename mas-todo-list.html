@@ -8,7 +8,7 @@
 <pre>
 <code>
 
-Last updated - 26-Jan-2021
+Last updated - 29-Jan-2021
 
 
    MAS Issues List:
@@ -16,6 +16,11 @@ Last updated - 26-Jan-2021
  - Cosmetic error: Showing product name Windows 10 in Windows 11 system in HWID/KMS38 scripts.
                    Reason: Product name registry is not updated in windows 11, didn't use WMI method because changes reflects in late when edition is changed
                    Solution: Need to use winbrand.dll to get product name (to be updated in MAS v1.6)
+
+ - HWID script crashes when it tries to proceed activation for unsupported edition if Retail/OEM/MAK key is installed.
+   Solution: In `HWID_Activation.cmd` line number 435, change to,
+   if /i "%key%"=="KCNVH-YKWX8-GJJB9-H9FDT-6F7W2" (
+
 
 
    MAS Todo List:
@@ -25,7 +30,7 @@ Last updated - 26-Jan-2021
  - Updated slc.dll for lockbox method, so that separate slc.dll is not required for ARM64
  - Test the scripts with various av's and find which commands or series of commands av's are complaining about and find alternatives
  - Show warning to clean subscription license in KMS script when expired Office subscription license is detected. It prevents volume license to take effect in activation
- - Show warning before converting to Windows SE before converting in change edition script
+ - Show warning before converting to Windows SE in change edition script
  - Make HWID/KMS38 & Windows section in KMS & change edition and key insert scripts futureproof for new Windows editions by getting required key from system itself
  - Do more testing and find bugs
  - More improvements overall
