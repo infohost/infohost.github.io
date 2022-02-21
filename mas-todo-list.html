@@ -8,7 +8,7 @@
 <pre>
 <code>
 
-Last updated - 29-Jan-2021
+Last updated - 21-Feb-2021
 
 
    MAS Issues List:
@@ -20,6 +20,15 @@ Last updated - 29-Jan-2021
  - HWID script crashes when it tries to proceed activation for unsupported edition if Retail/OEM/MAK key is installed.
    Solution: In `HWID_Activation.cmd` line number 435, change to,
    if /i "%key%"=="KCNVH-YKWX8-GJJB9-H9FDT-6F7W2" (
+
+ - In some cases, KMS script is unable to convert project/visio office apps to VL if O365 subscription is found.
+
+ - Script are not opening if special characters are found in script path,
+   Solution: 
+   Below line,
+   set "_PSarg="""%~f0""" -el %_args%"
+   Needs to be changed to,
+   set _PSarg="""%~f0""" -el %_args%
 
 
 
