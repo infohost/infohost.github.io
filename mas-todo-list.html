@@ -8,7 +8,7 @@
 <pre>
 <code>
 
-Last updated - 21-Feb-2021
+Last updated - 08-Mar-2022
 
 
    MAS Issues List:
@@ -21,7 +21,7 @@ Last updated - 21-Feb-2021
    Solution: In `HWID_Activation.cmd` line number 435, change to,
    if /i "%key%"=="KCNVH-YKWX8-GJJB9-H9FDT-6F7W2" (
 
- - In some cases, KMS script is unable to convert project/visio office apps to VL if O365 subscription is found.
+ - In some cases, KMS script is unable to convert project/visio office apps to VL if O365 subscription is found & unable to convert to VL from C2R retail
 
  - Script are not opening if special characters are found in script path,
    Solution: 
@@ -30,8 +30,22 @@ Last updated - 21-Feb-2021
    Needs to be changed to,
    set _PSarg="""%~f0""" -el %_args%
 
+ - Compressed2txt extraction is not working if admin user account name have special characters as "Hiền"
+   Solution: For now, use separate files version if it happens to you.
+ 
+ - Unable to clear ZoneIdentifier from files if file path have special characters
 
+ - In some rare cases, scripts are looping in reopen when trying to launch script from main arch process (cause: messed up systems.)
 
+ - Registry ownership snippet is not working if path have special characters (used in HWID lockbox method and in KMS38 protection)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
    MAS Todo List:
    
  - Update read me's with better format and content
@@ -42,8 +56,9 @@ Last updated - 21-Feb-2021
  - Show warning before converting to Windows SE in change edition script
  - Make HWID/KMS38 & Windows section in KMS & change edition and key insert scripts futureproof for new Windows editions by getting required key from system itself
  - Do more testing and find bugs
- - More improvements overall
  - Keep the folder/files names same in future versions. I.e. MAS_1.5_AIO_CRC32_21D20776.cmd should remain MAS_AIO.cmd
+ - Show the error about WMI and SPP separately
+ 
 </code></pre>
 
 <p>&nbsp;</p>
